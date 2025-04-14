@@ -1,0 +1,25 @@
+tables:
+  balise:
+    columns:
+      - id:
+          type: integer
+          primary_key: true
+      - name:
+          type: string
+      - typebalise_id:
+          type: integer
+          foreign_key: typebalise.id
+    relationships:
+      belongsTo:
+        - typebalise
+
+  typebalise:
+    columns:
+      - id:
+          type: integer
+          primary_key: true
+      - type_name:
+          type: string
+    relationships:
+      hasMany:
+        - balise

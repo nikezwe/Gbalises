@@ -1,0 +1,75 @@
+/* 🌐 Police globale */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* 🔵 Navbar personnalisée */
+.navbar {
+    background-color: #2e5288;
+}
+
+.navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.navbar .nav-link {
+    color: #ffffff !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ✔️ Lien actif */
+.navbar-nav .nav-item.active .nav-link {
+    background-color: #1d3e6e;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white !important;
+}
+
+/* 📦 Container principal */
+.container {
+    padding-top: 2rem;
+}
+
+/* 🟢 Boutons */
+.btn-primary {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+}
+
+/* 🔒 Lien désactivé (ex: Bienvenue utilisateur) */
+.nav-link.disabled {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* 🔘 Formulaire */
+form input,
+form select,
+form textarea {
+    border-radius: 6px;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+}
+
+/* ⚠️ Responsive custom (si besoin) */
+@media (max-width: 768px) {
+    .navbar .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .container {
+        padding-top: 1rem;
+    }
+}
