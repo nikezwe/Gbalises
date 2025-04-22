@@ -35,20 +35,20 @@ class BaliseController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(BaliseRequest $request)
-    {
-        $data = $request->validated(); // Récupère les données validées
-        /** @var UploadedFile|null $image */
-        $image = $request->validated('image');
-        if($image === null && !$image->getError())
-        {
-             $data['image'] = $image->store('blog','public');
-        }
-        Balise::create($data);
-    
-        return view('admin.balises.index', [
-            'balises' => Balise::with('typebalise')->get(),
-        ])->with('success', 'Balise ajoutée avec succès');
+{
+    $data = $request->validated(); // Récupère les données validées
+
+    // Vérifiez si une image est envoyée
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imagePath = $image->store('uploads', 'public'); // Stocke l'image dans storage/app/public/uploads
+        $data['image'] = $imagePath; // Enregistre le chemin dans la base de données
     }
+
+    Balise::create($data);
+
+    return to_route('admin.balise.index')->with('success', 'Balise ajoutée avec succès');
+}
     /**
      * Show the form for editing the specified resource.
      */
@@ -63,20 +63,21 @@ class BaliseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-     public function update(BaliseRequest $request, Balise $balise)
-     {
-         $data = $request->validated(); // Récupère les données validées
-        /** @var UploadedFile|null $image */
-        $image = $request->validated('image');
-        if($image === null && !$image->getError())
-        {
-             $data['image'] = $image->store('blog','public');
+    public function update(BaliseRequest $request, Balise $balise)
+    {
+        $data = $request->validated(); // Récupère les données validées
+    
+        // Vérifiez si une image est envoyée
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagePath = $image->store('uploads', 'public'); // Stocke l'image dans storage/app/public/uploads
+            $data['image'] = $imagePath; // Enregistre le chemin dans la base de données
         }
-         $balise->update($data); // Met à jour la balise avec les données validées
-     
-         return to_route('admin.balise.index')->with('success', 'Balise modifiée avec succès');
-     }
-
+    
+        $balise->update($data);
+    
+        return to_route('admin.balise.index')->with('success', 'Balise modifiée avec succès');
+    }
      /** Remove the specified resource from storage.
      */
     public function destroy(Balise $balise)

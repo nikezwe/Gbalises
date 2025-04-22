@@ -9,12 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\commande;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Auth\Passwords\CanResetPassword;
 
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    use HasRoles;
+    use HasRoles, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -50,5 +51,10 @@ class User extends Authenticatable
     public function commandes()
     {
         return $this->hasMany(commande::class);
+    }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
     }
 }

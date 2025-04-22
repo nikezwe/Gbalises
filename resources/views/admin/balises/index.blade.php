@@ -41,7 +41,7 @@
                     <tr>
                         <td>
                             @if($balise->image)
-                                <img src="{{ asset($balise->image) }}" alt="{{ $balise->nom }}" class="img-thumbnail" style="width: 100px; height: auto;">
+                            <img src="{{ asset('storage/' . $balise->image) }}" alt="{{ $balise->nom }}" class="img-thumbnail" style="width: 100px; height: auto;">
                             @else
                                 <span class="text-muted">Pas d'image</span>
                             @endif
@@ -51,12 +51,12 @@
                         <td>{{ $balise->typebalise->nom ?? 'Non défini' }}</td>
                         <td>
                             <div class="d-flex gap-3 justify-content-end">
-                                <!-- Bouton Editer -->
+                               
                                 <a href="{{ route('admin.balise.edit', $balise) }}" class="btn btn-warning btn-sm">
                                     Modifier
                                 </a>
 
-                                <!-- Formulaire de suppression -->
+                                
                                 <form action="{{ route('admin.balise.destroy', $balise) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')

@@ -18,10 +18,13 @@
             <div class="card shadow rounded-4">
                 <div class="row g-0">
                     
-                    <div class="col-md-5 d-flex align-items-center">
-                        <img src="{{ asset('storage/balises/' . $balise->image) }}" alt="Image de la balise" class="img-fluid rounded-start w-100 h-100 object-fit-cover" style="max-height: 100%;">
-                    </div>
-
+                <div class="col-md-5 d-flex align-items-center">
+                    @if($balise->image)
+                        <img src="{{ asset('storage/' . $balise->image) }}" alt="{{ $balise->nom }}" class="img-fluid rounded-start w-100 h-100 object-fit-cover" style="max-height: 100%;">
+                    @else
+                        <img src="{{ asset('images/default-placeholder.png') }}" alt="Image par défaut" class="img-fluid rounded-start w-100 h-100 object-fit-cover" style="max-height: 100%;">
+                    @endif
+                </div>
                     <div class="col-md-7">
                         <div class="card-body p-4">
                             <h4 class="mb-4 text-center">Commander cette balise</h4>
@@ -30,7 +33,7 @@
 
                             <form action="{{ route('balise.commande', $balise) }}" method="post" class="vstack gap-3">
                                 @csrf
-
+                                @method('POST')
                                 <div class="row">
                                     @include('shared.input', [
                                         'class' => 'col',

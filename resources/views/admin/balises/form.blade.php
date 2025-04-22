@@ -58,13 +58,13 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group mb-3">
+            <!-- <div class="form-group mb-3">
                 <label for="description" class="form-label">Description</label>
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <textarea class="form-control" id="description" name="description" rows="3" placeholder="Entrez une description de la balise">{{ old('description', $balises->description) }}</textarea>
-            </div>
+            </div> -->
 
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary w-100">

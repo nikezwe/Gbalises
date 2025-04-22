@@ -16,14 +16,14 @@
 <div class="container mt-4">
     <h1>Liste des Commandes</h1>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <form action="{{ route('admin.commande.index') }}" method="GET">
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="Rechercher un utilisateur ou une commande" value="{{ request()->get('search') }}">
                 <button class="btn btn-primary" type="submit">Rechercher</button>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <table class="table table-bordered table-striped">
         <thead class="table-dark">

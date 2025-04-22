@@ -25,7 +25,7 @@ class BaliseRequest extends FormRequest
             'nom' => 'required|string|max:50',
             'prix' => 'required|numeric|min:3',
             'typebalise_id' => 'required|exists:typebalises,id',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

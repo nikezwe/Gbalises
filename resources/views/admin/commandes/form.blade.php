@@ -20,7 +20,7 @@
             'class' => 'col',
             'label' => 'Prix',
             'name' => 'prix',
-            'value' => $balise->prix ?? '' // Utilise null coalescing pour éviter les erreurs
+            'value' => $commande->balise->prix ?? ''
         ])
     </div>
     <div>

@@ -24,7 +24,7 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Nouvelle commande')
+        return $this->subject('Nouvel contact')
                     ->view('emails.contact_admin')
                     ->with('data', $this->data);
     }

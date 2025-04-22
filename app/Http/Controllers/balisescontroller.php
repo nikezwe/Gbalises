@@ -65,6 +65,7 @@ class balisescontroller extends Controller
             'email' => $data['email'],
             'telephone' => $data['telephone'],
             'quantite' => $data['quantite'],
+            
         ]));
     
         return back();

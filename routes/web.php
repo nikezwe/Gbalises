@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\UsersController;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -38,8 +39,6 @@ Route::get('/balise/{slug}/{balise}', [balisesController::class, 'show'])->name(
 Route::post('/balise/{balise}/commande',[balisescontroller::class,'commande'])
 ->name('balise.commande')
 ->middleware('auth');
-
-
 Route::get('/commande/{userId}', [CommandeController::class, 'index'])->name('commande.index');
 
 Route::get('/commande', [CommandeController::class, 'create'])->name('commande.create');
@@ -49,6 +48,8 @@ Route::get('/about',[AboutController::class,'index'])->name('about.index');
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+
+//Authentification 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -69,6 +70,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('commande',CommandeController::class)->except('show');
     Route::get('users', [UsersController::class, 'index'])->name('users.index');
 // });
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+    Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 
 

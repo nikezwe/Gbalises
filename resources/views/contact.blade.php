@@ -1,6 +1,7 @@
 @include('admin.navbar')
 
 <div class="container py-5">
+    <!-- Section d'introduction -->
     <section class="text-center mb-5">
         <img src="{{ asset('images/micro.jpeg') }}" alt="MicroInfom" class="img-fluid rounded shadow-sm mb-4" style="max-height: 300px; object-fit: cover;">
         <h2 class="fw-bold">MicroInfom - Services de Sécurité</h2>
@@ -11,7 +12,7 @@
     </section>
 
     <section class="text-center mb-5">
-        <img src="{{ asset('images/geolocalisation.jpg') }}" class="img-fluid rounded shadow-sm" style="max-height: 300px; object-fit: cover;">
+        <img src="{{ asset('images/imagemicro2.jpeg') }}" class="img-fluid rounded shadow-sm" style="max-height: 300px; object-fit: cover;">
     </section>
 
     <section class="bg-light p-5 rounded-4 shadow-sm mb-5">
@@ -43,16 +44,12 @@
         </form>
     </section>
 
+    <!-- Section d'informations de contact -->
     <section class="row text-center text-md-start g-4">
         <div class="col-md-6">
             <h5 class="fw-bold">📞 Téléphone</h5>
             <p>Appelez-nous au : +257 22 21 98 61 ou +257 22 24 55 00</p>
         </div>
-        <div class="form_bouton">
-       <!-- <a href="https://wa.me/+25767338851">Whatsapp</a>-->
-        <a href="https://api.whatsapp.com/send?phone=79489976">Whatsapp</a>
-    </div>
-
         <div class="col-md-6">
             <h5 class="fw-bold">📍 Adresse</h5>
             <p>
@@ -60,6 +57,12 @@
                 Quartier Bwiza, Avenue de l'université n°77<br>
                 Burundi
             </p>
+        </div>
+        <div class="col-md-12 text-center">
+            <a href="https://api.whatsapp.com/send?phone=79489976" class="btn btn-success d-inline-flex align-items-center gap-3 py-2 px-4">
+                <img src="{{ asset('images/whatsapplogo.jpeg') }}" alt="WhatsApp" style="width: 30px; height: 30px;">
+                <span class="fw-bold" style="font-size: 1.2rem;">WhatsApp</span>
+            </a>
         </div>
     </section>
 </div>
