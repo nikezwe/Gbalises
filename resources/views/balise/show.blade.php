@@ -31,7 +31,7 @@
 
                             @include('shared.flash')
 
-                            <form action="{{ route('balise.commande', $balise) }}" method="post" class="vstack gap-3">
+                            <form action="{{ route('balise.commande',['balise'=>$balise])}}" method="post" class="vstack gap-3">
                                 @csrf
                                 @method('POST')
                                 <div class="row">
@@ -85,5 +85,4 @@
         </div>
     </div>
 </div>
-
 @endsection

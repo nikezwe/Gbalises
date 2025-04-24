@@ -47,6 +47,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // Redirigez vers la page de commande après l'enregistrement
-        return redirect()->route('commande.show',['balise'=>$balise]);
+        // return redirect()->route('balise.show',['balise'=>$balise]);
+        return redirect('/');
     }
 }

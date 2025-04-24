@@ -39,7 +39,8 @@ Route::get('/balise/{slug}/{balise}', [balisesController::class, 'show'])->name(
 Route::post('/balise/{balise}/commande',[balisescontroller::class,'commande'])
 ->name('balise.commande')
 ->middleware('auth');
-Route::get('/commande/{userId}', [CommandeController::class, 'index'])->name('commande.index');
+Route::get('/commande/{userId}', [CommandeController::class, 'index'])
+->name('commande.index');
 
 Route::get('/commande', [CommandeController::class, 'create'])->name('commande.create');
 Route::get('/publication',[PublicationController::class,'index'])->name('publication.index');
