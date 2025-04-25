@@ -11,9 +11,9 @@
         </p>
     </section>
 
-    <section class="text-center mb-5">
+    <!-- <section class="text-center mb-5">
         <img src="{{ asset('images/imagemicro2.jpeg') }}" class="img-fluid rounded shadow-sm" style="max-height: 300px; object-fit: cover;">
-    </section>
+    </section> -->
 
     <section class="bg-light p-5 rounded-4 shadow-sm mb-5">
         <h3 class="text-center mb-4">📩 Besoin de nous contacter ?</h3>
