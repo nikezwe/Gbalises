@@ -57,7 +57,7 @@
             </p>
         </div>
         <div class="col-md-12 text-center">
-            <a href="https://api.whatsapp.com/send?phone=79489976" class="btn btn-success d-inline-flex align-items-center gap-3 py-2 px-4">
+            <a href="https://api.whatsapp.com/send?phone= #" class="btn btn-success d-inline-flex align-items-center gap-3 py-2 px-4">
                 <img src="{{ asset('images/whatsapplogo.jpeg') }}" alt="WhatsApp" style="width: 30px; height: 30px;">
                 <span class="fw-bold" style="font-size: 1.2rem;">WhatsApp</span>
             </a>
