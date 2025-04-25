@@ -15,15 +15,11 @@
     </div>
 </section>
 
-<!-- Section principale avec liste des balises -->
 <div class="container mt-5">
-    <!-- Titre et bouton d'ajout -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Liste des Balises</h1>
         <a href="{{ route('admin.balise.create') }}" class="btn btn-primary">Ajouter une Balise</a>
     </div>
-
-    <!-- Tableau des Balises -->
     <div class="card shadow-sm">
         <div class="card-body">
             <table class="table table-striped table-bordered">
@@ -33,7 +29,7 @@
                         <th>Nom</th>
                         <th>Prix</th>
                         <th>Type</th>
-                        <th>Actions</th>
+                        <th> Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,12 +47,9 @@
                         <td>{{ $balise->typebalise->nom ?? 'Non défini' }}</td>
                         <td>
                             <div class="d-flex gap-3 justify-content-end">
-                               
                                 <a href="{{ route('admin.balise.edit', $balise) }}" class="btn btn-warning btn-sm">
                                     Modifier
                                 </a>
-
-                                
                                 <form action="{{ route('admin.balise.destroy', $balise) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
@@ -73,5 +66,4 @@
         </div>
     </div>
 </div>
-
 @endsection

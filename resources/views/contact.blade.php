@@ -1,7 +1,7 @@
 @include('admin.navbar')
 
 <div class="container py-5">
-    <!-- Section d'introduction -->
+
     <section class="text-center mb-5">
         <img src="{{ asset('images/micro.jpeg') }}" alt="MicroInfom" class="img-fluid rounded shadow-sm mb-4" style="max-height: 300px; object-fit: cover;">
         <h2 class="fw-bold">MicroInfom - Services de Sécurité</h2>
@@ -43,8 +43,6 @@
             </div>
         </form>
     </section>
-
-    <!-- Section d'informations de contact -->
     <section class="row text-center text-md-start g-4">
         <div class="col-md-6">
             <h5 class="fw-bold">📞 Téléphone</h5>

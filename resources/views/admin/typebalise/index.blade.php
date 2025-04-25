@@ -13,13 +13,10 @@
 @section('content')
 
 <div class="container mt-5">
-    <!-- Titre et bouton d'ajout -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Liste des Types de Balises</h1>
         <a href="{{ route('admin.typebalise.create') }}" class="btn btn-primary">Ajouter un Type</a>
     </div>
-
-    <!-- Tableau des Types de Balises -->
     <div class="card shadow-sm">
         <div class="card-body">
             <table class="table table-striped table-bordered">
@@ -35,12 +32,9 @@
                         <td>{{ $typebalise->nom }}</td>
                         <td>
                             <div class="d-flex gap-3 justify-content-end">
-                                <!-- Bouton Editer -->
                                 <a href="{{ route('admin.typebalise.edit', $typebalise) }}" class="btn btn-warning btn-sm">
                                     Modifier
                                 </a>
-                                
-                                <!-- Formulaire de suppression -->
                                 <form action="{{ route('admin.typebalise.destroy', $typebalise) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
@@ -56,8 +50,6 @@
             </table>
         </div>
     </div>
-
-    <!-- Pagination -->
     <div class="d-flex justify-content-center mt-3">
         {{ $typebalises->links() }}
     </div>
