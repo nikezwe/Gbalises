@@ -16,6 +16,9 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\admin\StockController;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\admin\FacturationController;
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,14 +49,12 @@ Route::get('/commande/{userId}', [CommandeController::class, 'index'])
 
 
 // Route désactivée, doit être protégée par auth
-// Route::get('/commande', [CommandeController::class, 'create'])->name('commande.create');
 
 Route::get('/publication',[PublicationController::class,'index'])->name('publication.index');
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
-
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 
 //Authentification 
 
@@ -70,12 +71,15 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // Route::middleware(['role:admin'])->group(function (){
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function (){
+    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('balise',BaliseController::class)->except('show');
     Route::resource('typebalise',TypeBaliseController::class)->except('show');
-    
+    Route::resource('facturation', FacturationController::class);
     Route::resource('commande',CommandeController::class)->except('show');
     Route::get('users', [UsersController::class, 'index'])->name('users.index');
+    Route::get('stock', [StockController::class, 'index'])->name('stock.index');
+    Route::post('stock/{balise}', [StockController::class, 'update'])->name('stock.update');
 // });
 });
 
@@ -85,8 +89,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 
-
-
 // Route publique pour afficher le panier (pour tous, gestion JS côté client)
 Route::get('/panier', function() {
     return view('panier');
@@ -94,21 +96,19 @@ Route::get('/panier', function() {
 
 // Routes du panier (backend, pour utilisateurs connectés)
 Route::middleware('auth')->group(function () {
-    // Ajouter un produit au panier
+
     Route::post('/panier', [CartController::class, 'store'])->name('cart.store');
-    // Mettre à jour la quantité dans le panier
+
     Route::patch('/panier/{cart}', [CartController::class, 'update'])->name('cart.update');
-    // Supprimer un produit du panier
+
     Route::delete('/panier/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
-    // Vider le panier
+
     Route::delete('/panier', [CartController::class, 'clear'])->name('cart.clear');
-    // Routes des commandes (déjà existantes mais à adapter)
+
     Route::get('/commande', [CommandeController::class, 'create'])->name('commande.create');
     Route::post('/commande', [CommandeController::class, 'store'])->name('commande.store');
     Route::get('/mes-commandes', [CommandeController::class, 'index'])->name('commande.index');
 });
-
-// Route publique pour obtenir le nombre d'items dans le panier (AJAX)
 Route::get('/panier/count', [CartController::class, 'getCartCount'])->name('cart.count');
 
 // Formulaire de commande pour l'utilisateur (protégé par auth)
@@ -116,21 +116,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/commande', function() {
         
         $user = Auth::user();
-
-    
         $panier = Cart::with('balise')
             ->where('user_id', $user->id)
             ->get();
-
         return view('commande', compact('panier', 'user'));
         })->name('commande.form');
     Route::post('/commande', [CommandeController::class, 'store'])->name('commande.store');
 });
 
-Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('stock', [StockController::class, 'index'])->name('stock.index');
-    Route::post('stock/{balise}', [StockController::class, 'update'])->name('stock.update');
-});
+// Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+//     Route::get('stock', [StockController::class, 'index'])->name('stock.index');
+//     Route::post('stock/{balise}', [StockController::class, 'update'])->name('stock.update');
+// });
 
 
 

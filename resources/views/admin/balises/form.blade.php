@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('title', $balises->exists ? 'Éditer la balise' : 'Ajouter une nouvelle balise')
 
 @section('content')
@@ -76,4 +77,5 @@
         </form>
     </div>
 </div>
+@include('admin.footer')
 @endsection

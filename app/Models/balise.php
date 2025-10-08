@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+
 class balise extends Model
 {
     use HasFactory;
@@ -26,4 +27,10 @@ class balise extends Model
     public function commandes(){
         return $this->hasMany(commande::class,'balise_id');
     }
+    public function balises()
+    {
+    return $this->belongsToMany(balise::class, 'balisecommandes', 'commande_id', 'balise_id')
+                ->withPivot('quantite', 'prix');
+    }
+
 }

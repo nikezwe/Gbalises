@@ -5,6 +5,7 @@
 @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
 @endif
+<div align-text="center">
 <table>
     <tr>
         <th>Nom</th>
@@ -30,4 +31,7 @@
     </tr>
     @endforeach
 </table>
+</div>
+
+@include('admin.footer')
 @endsection

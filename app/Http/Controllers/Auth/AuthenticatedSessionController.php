@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Route;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -23,18 +24,25 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    
+    public function store(Request $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+        ]);
 
+        if (Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
         $request->session()->regenerate();
 
-        // Redirection personnalisée après login : si ?intended est présent, on redirige vers cette page
-        $intended = $request->input('intended');
-        if ($intended) {
-            return redirect($intended);
-        }
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(
+        Auth::user()->isAdmin() ? route('admin.dashboard') : route('home')
+    );
+}
+
+        return back()->withErrors([
+        'email' => 'Identifiants invalides.',
+        ]);
     }
 
     /**
@@ -50,4 +58,12 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+    /**
+     * Show the login form with an intended URL.
+     */
+    public function redirectTo()
+{
+    return auth()->user()->is_admin ? route('admin.balise') : route('home');
+}
+
 }

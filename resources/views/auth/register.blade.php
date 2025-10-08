@@ -4,7 +4,7 @@
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="min-height:80vh;">
     <div class="card shadow p-4" style="max-width:400px;width:100%;border-radius:1rem;background:rgba(255,255,255,0.97);">
-        <h2 class="mb-4 text-center" style="color:#667eea;font-weight:bold;">Créer un compte</h2>
+        <h2 class="mb-4 text-center" style="color:#8c6f88;font-weight:bold;"><img src="{{ asset('images/micro.jpeg') }}"></h2>
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="mb-3">
@@ -26,9 +26,6 @@
                 <label for="password_confirmation" class="form-label">Confirmer le mot de passe</label>
                 <input id="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password">
                 @error('password_confirmation')<div class="invalid-feedback">{{ $message }}</div>@enderror
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <a href="{{ route('login') }}" class="text-decoration-none">Déjà inscrit ?</a>
             </div>
             <button type="submit" class="btn btn-primary w-100">Créer un compte</button>
         </form>

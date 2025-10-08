@@ -1,37 +1,41 @@
-@include('admin.navbar')
-
-@extends('admin.admin')
+@extends('layouts.app')
+@section('title', 'Liste des Commandes')
 
 @section('content')
-<div class="container mt-4">
-    <h1>Commandes de {{ $user->name }}</h1>
+    <h2>Commandes des utilisateurs</h2>
 
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <th>Nom de la balise</th>
-                <th>Quantité</th>
-                <th>État</th>
-                <th>Date de la commande</th>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Facture</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($commandes as $commande)
+            @foreach($commandes as $commande)
                 <tr>
-                    <td>{{ $commande->balise->nom ?? 'Non spécifiée' }}</td>
-                    <td>{{ $commande->quantite }}</td>
+                    <td>#{{ $commande->id }}</td>
+                    <td>{{ $commande->user->name }}</td>
+                    <td>{{ number_format($commande->total, 2) }} Fbu</td>
+                    <td>{{ $commande->created_at->format('d/m/Y') }}</td>
+                    <td>{{ ucfirst($commande->statut ?? 'en attente') }}</td>
                     <td>
-                        <span class="badge bg-{{ $commande->etat == 'Livrée' ? 'success' : 'warning' }}">
-                            {{ $commande->etat }}
-                        </span>
+                        @if($commande->facture)
+                            <a href="{{ route('admin.facturation.show', $commande->facture->id) }}" class="btn btn-info btn-sm">
+                                Voir Facture
+                            </a>
+                        @else
+                            <a href="{{ route('admin.facturation.create') }}?commande_id={{ $commande->id }}" class="btn btn-success btn-sm">
+                                Créer Facture
+                            </a>
+                        @endif
                     </td>
-                    <td>{{ $commande->created_at->format('d-m-Y') }}</td> <!-- Affichage de la date -->
                 </tr>
             @endforeach
         </tbody>
     </table>
-
-    <!-- Pagination -->
-    {{ $commandes->links() }}
-</div>
 @endsection

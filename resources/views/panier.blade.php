@@ -13,6 +13,14 @@
                     <h1>Cart</h1>
                 </div>
             </div>
+                    {{-- <div class="col-lg-7">
+                        <div class="hero-img-wrap">
+                            <img src="{{ asset('images/.jpg') }}" class="img-fluid">
+                        </div>
+                    </div> --}}
+            </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -87,6 +95,7 @@
     </div>
 
 </div>
+@include('admin.footer')
 
 @endsection
 

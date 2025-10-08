@@ -119,36 +119,37 @@ a {
         font-size: 54px; } }
   .hero p {
     color: rgba(255, 255, 255, 0.5);
-    margin-botom: 30px; }
+    margin-bottom: 30px;
+ }
   .hero .hero-img-wrap {
     position: relative; }
     .hero .hero-img-wrap img {
       position: relative;
       top: 0px;
-      right: 0px;
+      right: 5px;
       z-index: 2;
-      max-width: 780px;
+      max-width: 700px;
       left: -20px; }
-      @media (min-width: 768px) {
+      @media (min-width: 876px) {
         .hero .hero-img-wrap img {
           right: 0px;
-          left: -100px; } }
+          left: -150px; } }
       @media (min-width: 992px) {
         .hero .hero-img-wrap img {
           left: 0px;
           top: -80px;
           position: absolute;
-          right: -50px; } }
-      @media (min-width: 1200px) {
+          right: -80px; } }
+      @media (min-width: 1000px) {
         .hero .hero-img-wrap img {
           left: 0px;
           top: -80px;
-          right: -100px; } }
+          right: -150px; } }
     .hero .hero-img-wrap:after {
       content: "";
       position: absolute;
-      width: 255px;
-      height: 217px;
+      width: 355px;
+      height: 300px;
       background-image: url("../images/dots-light.svg");
       background-size: contain;
       background-repeat: no-repeat;
@@ -276,8 +277,8 @@ a {
     .why-choose-section .img-wrap:before {
       position: absolute;
       content: "";
-      width: 255px;
-      height: 217px;
+      width: 355px;
+      height: 300px;
       background-image: url("../images/dots-yellow.svg");
       background-repeat: no-repeat;
       background-size: contain;
@@ -314,9 +315,7 @@ a {
 .we-help-section {
   padding: 7rem 0; }
   .we-help-section .imgs-grid {
-    display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[27];
     grid-template-columns: repeat(27, 1fr);
     position: relative; }
     .we-help-section .imgs-grid:before {
@@ -709,3 +708,24 @@ textarea {
     height: 50px;
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
+  
+    .product-item {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+  .product-item:hover {
+      transform: translateY(-5px);
+  }
+
+  .product-item:hover .icon-cross {
+      background: #5a6fd8 !important;
+  }
+
+  .product-thumbnail {
+      transition: transform 0.3s ease;
+  }
+
+  .product-item:hover .product-thumbnail {
+      transform: scale(1.05);
+  }

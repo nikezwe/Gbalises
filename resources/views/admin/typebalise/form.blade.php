@@ -1,7 +1,6 @@
 @extends('layouts.app')
-@extends('admin.admin')
-
 @section('title', $typebalises->exists ? 'Éditer le Type de Balise' : 'Ajouter un Nouveau Type de Balise')
+@section('content')
 <section class="text-center mb-5">
     <div class="d-flex flex-column justify-content-center align-items-center">
     <img src="{{ asset('images/micro.jpeg') }}" alt="MicroInfom" class="img-fluid rounded shadow-sm mb-4" style="max-height: 300px; object-fit: cover;">
@@ -12,8 +11,6 @@
         </p>
     </div>
 </section>
-@section('content')
-
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow-sm" style="width: 100%; max-width: 500px;">
         <h1 class="mb-4 text-center">@yield('title')</h1>
@@ -40,5 +37,5 @@
         </form>
     </div>
 </div>
-
+@include('admin.footer')
 @endsection

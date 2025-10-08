@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class commande extends Model
 {
@@ -28,5 +29,9 @@ class commande extends Model
         return $this->belongsToMany(balise::class, 'balise_commande', 'commande_id', 'balise_id')
             ->withPivot('quantite')
             ->withTimestamps();
+    }
+    public function balisecommandes()
+    {
+        return $this->hasMany(balisecommande::class, 'commande_id');
     }
 }

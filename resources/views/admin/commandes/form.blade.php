@@ -1,5 +1,4 @@
-@extends('admin.admin')
-
+@extends('layouts.app')
 @section('title', $commande->exists ? "Editer une commande" : "Créer une commande")
 
 @section('content')

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Modules-Balises')
 @section('content')
 
 <!-- Section avec image et texte centré -->
@@ -64,4 +65,6 @@
         </div>
     </div>
 </div>
+</div>
+@include('admin.footer')
 @endsection

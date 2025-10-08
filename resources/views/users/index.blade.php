@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@extends('admin.admin')
+@section('content')
 <section class="text-center mb-5">
     <div class="d-flex flex-column justify-content-center align-items-center">
     <img src="{{ asset('images/micro.jpeg') }}" alt="MicroInfom" class="img-fluid rounded shadow-sm mb-4" style="max-height: 300px; object-fit: cover;">
@@ -10,20 +10,8 @@
         </p>
     </div>
 </section>
-@section('content')
-
 <div class="container mt-4">
     <h1>Liste des Commandes</h1>
-
-    <!-- <div class="mb-3">
-        <form action="{{ route('admin.commande.index') }}" method="GET">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Rechercher un utilisateur ou une commande" value="{{ request()->get('search') }}">
-                <button class="btn btn-primary" type="submit">Rechercher</button>
-            </div>
-        </form>
-    </div> -->
-
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
@@ -62,5 +50,5 @@
 
     {{ $users->links() }}
 </div>
-
+@include('admin.footer')
 @endsection

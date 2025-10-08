@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','stock')
 @section('content')
     <h1>Gestion du stock des balises</h1>
     @if(session('success'))
@@ -32,4 +32,5 @@
             @endforeach
         </tbody>
     </table>
+    @include('admin.footer')
 @endsection

@@ -4,7 +4,7 @@
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="min-height:80vh;">
     <div class="card shadow p-4" style="max-width:400px;width:100%;border-radius:1rem;background:rgba(255,255,255,0.97);">
-        <h2 class="mb-4 text-center" style="color:#667eea;font-weight:bold;">Connexion</h2>
+        <h2 class="mb-4 text-center" style="color:#798c6f;font-weight:bold;"><img src="{{ asset('images/micro.jpeg') }}"></h2>
         @if(session('status'))
             <div class="alert alert-success">{{ session('status') }}</div>
         @endif

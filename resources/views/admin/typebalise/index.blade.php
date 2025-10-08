@@ -1,5 +1,6 @@
-@extends('admin.admin')
 @extends('layouts.app')
+@section('title','Categories')
+@section('content')
 <section class="text-center mb-5">
     <div class="d-flex flex-column justify-content-center align-items-center">
     <img src="{{ asset('images/micro.jpeg') }}" alt="MicroInfom" class="img-fluid rounded shadow-sm mb-4" style="max-height: 300px; object-fit: cover;">
@@ -10,8 +11,6 @@
         </p>
     </div>
 </section>
-@section('content')
-
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Liste des Types de Balises</h1>
@@ -54,5 +53,5 @@
         {{ $typebalises->links() }}
     </div>
 </div>
-
+@include('admin.footer')
 @endsection

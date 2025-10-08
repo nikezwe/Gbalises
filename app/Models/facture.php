@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class balisecommande extends Model
+class facture extends Model
 {
     use HasFactory;
-
-  
-    protected $table = 'balise_commande';
+    protected $table = 'factures';
     protected $guarded = [];
-    public function balise()
+    public function user()
     {
-        return $this->belongsTo(balise::class);
+        return $this->belongsTo(User::class);
     }
     public function commande()
     {
-        return $this->belongsTo(commande::class);
-    }
+        return $this->belongsTo(commande::class);    
+}
 }

@@ -26,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        
     ];
 
     /**
@@ -46,6 +47,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+
     ];
 
     public function commandes()
@@ -57,9 +59,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+
     
     public function isAdmin()
     {
         return $this->role === 'admin';
     }
+   
+    public function factures()
+    {
+        return $this->hasMany(facture::class);
+    }
+
 }

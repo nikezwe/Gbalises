@@ -1,21 +1,24 @@
 @extends('layouts.app')
 @section('title', 'Contact')
 @section('content')
-
     <!-- Start Hero Section -->
       <div class="hero">
         <div class="container">
           <div class="row justify-content-between">
             <div class="col-lg-5">
-              <div class="intro-excerpt">
-                <h1>Contact</h1>
-                <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-                <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+              <div class="col-lg-5">
+                  <div class="intro-excerpt">
+                      <h1>Contactez <span class="d-block">Nous</span></h1>
+                      <p class="mb-4">Découvrez notre collection exclusive de produits informatiques de qualité.</p>
+                      <p><a href="" class="btn btn-secondary me-2">Nos Produits</a></p>
+                  </div>
               </div>
-            </div>
-            <div class="col-lg-7">
-              <div class="hero-img-wrap">
-                <img src="images/couch.png" class="img-fluid">
+              </div>
+                    <div class="col-lg-7">
+                         <div class="hero-img-wrap">
+                            <img src="{{ asset('images/geolocalisation.jpg') }}" class="img-fluid">
+                        </div>
+                    </div>
               </div>
             </div>
           </div>
@@ -23,17 +26,13 @@
       </div>
     <!-- End Hero Section -->
 
-    
     <!-- Start Contact Form -->
     <div class="untree_co-section">
       <div class="container">
 
         <div class="block">
           <div class="row justify-content-center">
-
-
             <div class="col-md-8 col-lg-8 pb-4">
-
               <div class="row mb-5">
                 <div class="col-lg-4">
                   <div  class="service no-shadow align-items-center link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0">
@@ -43,7 +42,7 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <p>43 Raymouth Rd. Baltemoer, London 3910</p>
+                      <p>77 avenue de l'universite. Bujumbura, Burundi</p>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
@@ -56,7 +55,7 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <p>info@yourdomain.com</p>
+                      <p>admin@gmail.com</p>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
@@ -64,13 +63,16 @@
                 <div class="col-lg-4">
                   <div  class="service no-shadow align-items-center link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0">
                     <div class="service-icon color-1 mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                      {{-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/> --}}
                       </svg>
                     </div> <!-- /.icon -->
-                    <div class="service-contents">
-                      <p>+1 294 3925 3939</p>
-                    </div> <!-- /.service-contents-->
+                  <div class="service-contents d-flex align-items-center gap-2">
+                      <a href="https://api.whatsapp.com/send?phone=65331185" target="_blank" class="d-flex align-items-center text-decoration-none">
+                          <img src="{{ asset('images/whatsapplogo.jpeg') }}" alt="WhatsApp" style="width: 35px; height: 35px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+                          <span class="fw-bold ms-2" style="font-size: 1.1rem; color: #25D366;">WhatsApp</span>
+                      </a>
+                  </div><!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
               </div>
@@ -96,7 +98,7 @@
                 </div>
                  <div class="form-group">
                   <label class="text-black" for="telephone">Telephone</label>
-                  <input type="email" class="form-control" id="telephone">
+                  <input type="number" class="form-control" id="telephone">
                 </div>
                 <div class="form-group mb-5">
                   <label class="text-black" for="message">Message</label>
@@ -115,5 +117,6 @@
       </div>
     </div>
   </div>
-
+    <!-- End Contact Form -->
+    @include('admin.footer')
 @endsection

@@ -58,16 +58,16 @@ class balisescontroller extends Controller
 
         $data = $request->validated();
 
-        $commande = $balise->commandes()->create([
-            'user_id' => auth()->id(),
-            'balise_id' => $balise->id,
-            'nom' => $data['nom'],
-            'prenom' => $data['prenom'],
-            'email' => $data['email'],
-            'telephone' => $data['telephone'],
-            'quantite' => $data['quantite'],
-            'etat' => 'en attente',
-        ]);
+        // $commande = $balise->commandes()->create([
+        //     'user_id' => auth()->id(),
+        //     'balise_id' => $balise->id,
+        //     'nom' => $data['nom'],
+        //     'prenom' => $data['prenom'],
+        //     'email' => $data['email'],
+        //     'telephone' => $data['telephone'],
+        //     'quantite' => $data['quantite'],
+        //     'etat' => 'en attente',
+        // ]);
 
         return redirect()->route('balise.show', ['slug' => $balise->getSlug(), 'balise' => $balise->id])
         ->with('success', 'Votre commande a bien été reçue.');
@@ -84,4 +84,5 @@ class balisescontroller extends Controller
     
         return back();
     } 
+    
 }
